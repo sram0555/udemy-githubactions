@@ -1,12 +1,13 @@
-name: HAndle Issues
+name: Handle Issues
 on:
   issues:
-    types: [opened, edited, closed]   
+    types: [opened, edited, closed]
+
 jobs:
   output-info:
     runs-on: ubuntu-latest
-  
-    steps:
-      - name: Output events
-        run: echo "${{ toJSON(github.event) }}"
+    if: github.event.repository.default_branch == 'master'
 
+    steps:
+      - name: Output event details
+        run: echo "${{ toJSON(github.event) }}"
