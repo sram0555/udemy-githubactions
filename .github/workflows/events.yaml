@@ -3,6 +3,7 @@ on: issues
 jobs:
   output-info:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Output events
         run: echo "${{ toJSON(github.event) }}"
