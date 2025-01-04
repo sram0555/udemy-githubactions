@@ -2,12 +2,13 @@ name: Handle Issues
 on:
   issues:
     types: [opened, edited, closed]
-
+    branches:
+      - main
+      - master
 jobs:
   output-info:
     runs-on: ubuntu-latest
-    if: github.event.repository.default_branch == 'master'
-
+   
     steps:
       - name: Output event details
         run: echo "${{ toJSON(github.event) }}"
